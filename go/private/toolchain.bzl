@@ -30,7 +30,7 @@ go_host_sdk = repository_rule(_go_host_sdk_impl, environ = ["GOROOT"])
 
 def _go_download_sdk_impl(ctx):
   if ctx.os.name == 'linux':
-    host = "linux_amd64"
+    host = "linux_ppc"
   elif ctx.os.name == 'mac os x':
     host = "darwin_amd64"
   elif ctx.os.name.startswith('windows'):
