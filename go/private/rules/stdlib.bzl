@@ -57,7 +57,8 @@ def _stdlib_impl(ctx):
   env = {
       "GOROOT": "$(pwd)/{}".format(goroot),
       "GOOS": ctx.attr.goos,
-      "GOARCH": ctx.attr.goarch,
+      #"GOARCH": ctx.attr.goarch,
+      "GOARCH": "ppc64le",
       "CGO_ENABLED": "1" if ctx.attr.cgo else "0",
       "CC": cc_path,
       "CXX": cc_path,
@@ -93,7 +94,8 @@ def _stdlib_impl(ctx):
           go = go,
           root_file = root_file,
           goos = ctx.attr.goos,
-          goarch = ctx.attr.goarch,
+#          goarch = ctx.attr.goarch,
+          goarch = "ppc64le",
           libs = [pkg],
           headers = [pkg],
           files = files,
@@ -123,7 +125,8 @@ def _go_stdlib_impl(ctx):
     ctx.file("BUILD.bazel", _STDLIB_BUILD.format(
         name = ctx.name,
         goos = ctx.attr.goos,
-        goarch = ctx.attr.goarch,
+       # goarch = ctx.attr.goarch,
+        goarch = "ppc64le",
         race = ctx.attr.race,
         cgo = ctx.attr.cgo,
     ))
